@@ -1,0 +1,132 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" id="1" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="2" href="#">tratte</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="3" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="4" href="#">Disabled</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <div class="container">
+  
+        <div class="container" id="1">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col"> </th>
+                <th scope="col">nome tratta</th>
+                <th scope="col">data di acquisto</th>
+                <th scope="col">data di utilizzo</th>
+              </tr>
+            </thead>
+            <tbody>
+              {%for i in sales%}
+              <tr class="journey_row">
+                <th scope="row">1</th>
+                <td>{{i["name"]}}</td>
+                <td>{{i["acquired_date"]}}</td>
+                <td>{{i["used_date"]}} €</td>
+              </tr> 
+              {%endfor%} 
+
+            </tbody>
+          </table>
+        </div> 
+        <div class="container" id="2">
+          
+          
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col"> </th>
+                <th scope="col">Nome</th>
+                <th scope="col">inizio</th>
+                <th scope="col">fine</th>
+                <th scope="col">Prezzo</th>
+              </tr>
+            </thead>
+            <tbody>
+              {%for i in journeys%}
+              <tr class="journey_row">
+                <th scope="row">1</th>
+                <td>{{i["name"]}}</td>
+                <td>{{i["start_place"]}}</td>
+                <td>{{i["end_place"]}}</td>
+                <td>{{i["price"]}} €</td>
+              </tr> 
+              {%endfor%} 
+
+            </tbody>
+          </table>
+          
+          
+          
+          
+          
+         
+  
+         
+     </div>
+        <div class="container" id="3"> 
+          <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col"> </th>
+              <th scope="col">valore</th>
+              <th scope="col">spendibile</th>
+              <th scope="col">data di scadenza</th>
+            </tr>
+          </thead>
+          <tbody>
+            {%for i in vouchers %}
+            <tr class="journey_row">
+              <th scope="row">1</th>
+              <td>{{i["value"]}} €</td>
+              <td>{{i["valid"]}}</td>
+              <td>{{i["expired_date"]}} </td>
+            </tr> 
+            {%endfor%} 
+
+          </tbody>
+        </table>
+      </div>
+        <div class="container" id="4">quarto div con 
+            <button >checkout</button>
+        </div> 
+     
+
+
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) { 
+          console.log( "ready!" );
+    document.querySelectorAll('.nav-link').forEach(item => {
+            item.addEventListener('click', event => {
+                document.querySelectorAll(".container ").forEach(itema=>{
+            if (item.id==itema.id)
+            {
+            itema.style.visibility = "visible";
+            }else{
+                itema.style.visibility = "hidden";
+            }
+                 });
+    })
+});   
+        });
+        </script>
